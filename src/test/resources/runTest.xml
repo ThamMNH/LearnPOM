@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite parallel="false" name="Suite">
+  <test name="Test run with Edge browser">
+  <parameter name ="browser" value="chrome"/>
+    <classes>
+      
+     
+      <class name="com.nopcommerce.demo.TS_03_MyAccount"/>
+      <!--<class name="com.nopcommerce.demo.TS_02_Login"/>-->
+      
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
+
+<!--TS_00_Preconditions
+TS_03_MyAccount
+-->
+
