@@ -23,6 +23,11 @@ public class BaseTest {
         }
 	}
 	
+	public WebDriver getDriver() {
+        return driver;
+    }
+	
+	
 	public WebDriver getBrowserDriver(String url, String browserName) {
 //		System.setProperty("webdriver.chrome.driver", projectPath + "\\browserDrivers\\chromedriver.exe");
 		if(browserName.equalsIgnoreCase("chrome")) {
