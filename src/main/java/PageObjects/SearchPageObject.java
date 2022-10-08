@@ -38,8 +38,25 @@ public class SearchPageObject extends BasePage{
 		clickToElement(driver, SearchPageUI.ADVS_CHECKBOX);
 	}
 	
-//	public boolean isSearchProductTitleDisplayedOnPageAsExpected (String value) {
-//		return isTitleDisplayOnPage(driver, SearchPageUI.)
-//	}
+	public void selectCategory(String text) {
+		waitForElementVisisble(driver, SearchPageUI.SELECT_CATEGORY);
+		selectDropdown(driver, SearchPageUI.SELECT_CATEGORY, text);
+	}
+	
+	public void clickToSubCategoriesCheckbox() {
+		waitForElementVisisble(driver, SearchPageUI.SEARCH_SUBCATEGORY_CHECKBOX);
+		clickToElement(driver, SearchPageUI.SEARCH_SUBCATEGORY_CHECKBOX);
+	}
+		
+	public boolean isSearchProductTitleDisplayedOnPageAsExpected(String value) {
+		return isTitleDisplayedOnPage(driver, SearchPageUI.PRODUCT_TITLE, value);
+	}
+	
+	public boolean checkDisplayItems(String value) {
+		waitForElementVisisble(driver, SearchPageUI.PRODUCT_TITLE);
+		String productTitle = getTextOfElement(driver, SearchPageUI.PRODUCT_TITLE);
+		return productTitle.contains(value);
+	}
+
 }
 

@@ -16,7 +16,8 @@ public class GlobalConstants {
 	public static final String address_address1 = "23 Lanark Way";
 	public static final String address_postal_code = "L31PJ";
 	public static final String address_phone = "011319986";
-	public static final String search_valid_item = "Lenovo";
+	public static final String search_valid_item1 = "Lenovo";
+	public static final String search_valid_item2 = "Apple Macbook Pro";
 	public static final String search_invalid_item = "Macbook Pro 2040";
 	
 	

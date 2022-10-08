@@ -22,8 +22,9 @@ public class TC_04_Search extends BaseTest{
 	SearchPageObject searchPage;
 	LoginPageObject loginPage;
 	HomePageObject homePage;
-	String invalidData = GlobalConstants.search_valid_item;
-	String validData = GlobalConstants.search_valid_item;
+	String invalidData = GlobalConstants.search_invalid_item;
+	String validData1 = GlobalConstants.search_valid_item1;
+	String validData2 = GlobalConstants.search_valid_item2;
 
 	@Parameters({ "browser" })
 	@BeforeClass
@@ -56,24 +57,30 @@ public class TC_04_Search extends BaseTest{
 	@Test
 	public void TC_03_SearchLenovo() {
 		searchPage.refreshCurrentPage(driver);
-		searchPage.keyinSearchTextbox(validData);
+		searchPage.keyinSearchTextbox(validData1);
 		searchPage.clickOnSearchButton();
-//		Assert.assertTrue(searchPage.isSearchProductTitleDisplayedOnPageAsExpected(validData));
-		List<WebElement> ListOfProducts = driver.findElements(By.xpath("//h2[@class='product-title']//a"));
-		for(WebElement listobj: ListOfProducts) {
-			System.out.println(listobj.getText());
-			Assert.assertTrue(listobj.getText().contains(validData));
-		}
-		sleepInSeconds(3);
+		Assert.assertTrue(searchPage.isSearchProductTitleDisplayedOnPageAsExpected("Lenovo"));
 	}
+	
 	@Test
 	public void TC_04_AdvanceSearchWithParentCategories() {
 		searchPage.refreshCurrentPage(driver);
-		searchPage.keyinSearchTextbox("Apple Macbook Pro");
+		searchPage.keyinSearchTextbox(validData1);
 		searchPage.clickToAdvanceCheckbox();
-		
-		
+		searchPage.selectCategory("Computers");
+		searchPage.clickOnSearchButton();
+		Assert.assertTrue(searchPage.checkNoSearchResultMessage("No products were found that matched your criteria."));		
+	}
 	
+	@Test
+	public void TC_05_AdvanceSearchWithSubCategories() {
+		searchPage.refreshCurrentPage(driver);
+		searchPage.keyinSearchTextbox(validData2);
+		searchPage.clickToAdvanceCheckbox();
+		searchPage.selectCategory("Computers");
+		searchPage.clickToSubCategoriesCheckbox();
+		searchPage.clickOnSearchButton();
+		Assert.assertTrue(searchPage.checkDisplayItems(validData2));
 	}
 }
 
